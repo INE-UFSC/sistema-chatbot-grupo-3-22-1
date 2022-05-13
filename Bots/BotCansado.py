@@ -1,4 +1,4 @@
-from Bot import Bot
+from Bots.Bot import Bot
 from random import choice
 
 class BotCansado(Bot):
@@ -17,7 +17,7 @@ class BotCansado(Bot):
         
         # nome do bot
         elif cmd == "2":
-            return choice(["Acho que é {} ou alguma coisa".format(self.__nome), "Já não leu quando me escolheu?!", "{}. O que mais?".format(self.__nome)])
+            return choice(["Acho que é {} ou alguma coisa".format(self.nome), "Já não leu quando me escolheu?!", "{}. O que mais?".format(self.nome)])
         
         # dica
         elif cmd == "3":
