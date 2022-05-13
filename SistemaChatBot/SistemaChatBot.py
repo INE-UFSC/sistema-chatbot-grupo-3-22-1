@@ -19,7 +19,7 @@ class SistemaChatBot:
     
     def escolhe_bot(self):
         escolha = input("Digite o número do bot desejado:")
-        self.__bot = self.__lista_bots[escolha]
+        self.__bot = self.__lista_bots[int(escolha)]
         ##faz a entrada de dados do usuário e atribui o objeto ao atributo __bot 
 
     def mostra_comandos_bot(self):
