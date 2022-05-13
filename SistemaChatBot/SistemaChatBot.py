@@ -1,3 +1,4 @@
+from operator import index
 from Bots.Bot import Bot
 
 class SistemaChatBot:
@@ -8,27 +9,39 @@ class SistemaChatBot:
         self.__bot = None
     
     def boas_vindas(self):
-        pass
+        print("Olá, esse é o sistema de chatbots da empresa " + self.__empresa)
         ##mostra mensagem de boas vindas do sistema
 
     def mostra_menu(self):
-        pass
+        print("Os chat bots disponíveis no momento são: ")
+        for bot in self.__lista_bots:
+            print(str(index(bot)) + " - Bot: " + bot.nome + " - Mensagem de apresentação: " + bot.apresentacao())
         ##mostra o menu de escolha de bots
     
     def escolhe_bot(self):
-        pass
+        escolha = input("Digite o número do bot desejado:")
+        self.__bot = self.__lista_bots[escolha]
         ##faz a entrada de dados do usuário e atribui o objeto ao atributo __bot 
 
     def mostra_comandos_bot(self):
-        pass
+        return self.__bot.mostra_comandos()
         ##mostra os comandos disponíveis no bot escolhido
 
     def le_envia_comando(self):
-        pass
+        códigoDoComando = input("Digite o comando desejado " + "(" + "ou -1 para fechar o programa e sair" + ")")
+        if códigoDoComando == -1:
+            self.__bot.despedida()
+        else:
+            self.__bot.executa_comando(códigoDoComando)
+            self.le_envia_comando()
         ##faz a entrada de dados do usuário e executa o comando no bot ativo
 
     def inicio(self):
-        pass
+        self.boas_vindas()
+        self.mostra_menu()
+        self.escolhe_bot()
+        self.boas_vindas()
+        self.le_envia_comando()
         ##mostra mensagem de boas-vindas do sistema
         ##mostra o menu ao usuário
         ##escolha do bot      
