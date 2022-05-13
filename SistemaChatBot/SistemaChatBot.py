@@ -1,4 +1,3 @@
-from operator import index
 from Bots.Bot import Bot
 
 class SistemaChatBot:
@@ -15,7 +14,7 @@ class SistemaChatBot:
     def mostra_menu(self):
         print("Os chat bots disponíveis no momento são: ")
         for bot in self.__lista_bots:
-            print(str(index(bot)) + " - Bot: " + bot.nome + " - Mensagem de apresentação: " + bot.apresentacao())
+            print(str(self.__lista_bots.index(bot)) + " - Bot: " + bot.nome + " - Mensagem de apresentação: " + bot.apresentacao())
         ##mostra o menu de escolha de bots
     
     def escolhe_bot(self):
@@ -29,7 +28,7 @@ class SistemaChatBot:
 
     def le_envia_comando(self):
         códigoDoComando = input("Digite o comando desejado " + "(" + "ou -1 para fechar o programa e sair" + ")")
-        if códigoDoComando == -1:
+        if códigoDoComando == "-1":
             self.__bot.despedida()
         else:
             self.__bot.executa_comando(códigoDoComando)
