@@ -3,8 +3,14 @@ from Bots.Bot import Bot
 class SistemaChatBot:
     def __init__(self,nomeEmpresa,lista_bots):
         self.__empresa=nomeEmpresa
+        self.__lista_bots = list()
         ##verificar se a lista de bots contém apenas bots
-        self.__lista_bots=lista_bots
+        for bot in lista_bots:
+            if not isinstance(bot, Bot):
+                print(f"Objeto {bot} não é do tipo bot!\n")
+            else:
+                self.__lista_bots.append(bot)
+
         self.__bot = None
     
     def boas_vindas(self):
@@ -14,17 +20,20 @@ class SistemaChatBot:
     def mostra_menu(self):
         print("Os chat bots disponíveis no momento são: ")
         for bot in self.__lista_bots:
-            print(str(self.__lista_bots.index(bot)) + " - Bot: " + bot.nome + " - Mensagem de apresentação: " + bot.apresentacao())
+            print(str(self.__lista_bots.index(bot)) + " - Bot: " + bot.nome + ": " + bot.apresentacao())
         ##mostra o menu de escolha de bots
     
     def escolhe_bot(self):
         try:
             escolha = input("Digite o número do bot desejado:")
             self.__bot = self.__lista_bots[int(escolha)]
-        except IndexError:
+        except:
             print("Número selecionado inválido")
             self.escolhe_bot()
         ##faz a entrada de dados do usuário e atribui o objeto ao atributo __bot 
+
+    def boas_vindas_bot(self):
+        print(self.__bot.boas_vindas())
 
     def mostra_comandos_bot(self):
         print(self.__bot.mostra_comandos())
@@ -45,7 +54,7 @@ class SistemaChatBot:
         self.boas_vindas()
         self.mostra_menu()
         self.escolhe_bot()
-        self.boas_vindas()
+        self.boas_vindas_bot()
         self.mostra_comandos_bot()
         self.le_envia_comando()
         ##mostra mensagem de boas-vindas do sistema

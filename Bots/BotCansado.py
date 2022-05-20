@@ -2,8 +2,6 @@ from Bots.Bot import Bot
 from random import choice
 
 class BotCansado(Bot):
-    def __init__(self, nome, comandos):
-        super().__init__(nome, comandos)
 
     # executada ao mostrar os bots disponiveis
     def apresentacao(self):
@@ -32,7 +30,7 @@ class BotCansado(Bot):
 
     # quando bot é escolhido
     def boas_vindas(self):
-        return "Sério? Eu? Pra que?"
+        return "\nSério? Eu? Pra que?\n"
     
     # chama a funcao despedida quando usa comando -1
     def despedida(self):
