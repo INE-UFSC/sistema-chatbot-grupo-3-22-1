@@ -27,15 +27,17 @@ class SistemaChatBot:
         ##faz a entrada de dados do usuário e atribui o objeto ao atributo __bot 
 
     def mostra_comandos_bot(self):
-        return self.__bot.mostra_comandos()
+        print(self.__bot.mostra_comandos())
         ##mostra os comandos disponíveis no bot escolhido
 
     def le_envia_comando(self):
         codigoDoComando = input("Digite o comando desejado " + "(" + "ou -1 para fechar o programa e sair" + "): ")
+        print()
         if codigoDoComando == "-1":
             print(self.__bot.despedida())
         else:
-            print(self.__bot.executa_comando(codigoDoComando))
+            print(" -", self.__bot.executa_comando(codigoDoComando), "\n")
+            self.mostra_comandos_bot()
             self.le_envia_comando()
         ##faz a entrada de dados do usuário e executa o comando no bot ativo
 
@@ -44,6 +46,7 @@ class SistemaChatBot:
         self.mostra_menu()
         self.escolhe_bot()
         self.boas_vindas()
+        self.mostra_comandos_bot()
         self.le_envia_comando()
         ##mostra mensagem de boas-vindas do sistema
         ##mostra o menu ao usuário
