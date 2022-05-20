@@ -20,6 +20,7 @@ class SistemaChatBot:
         ## mostra mensagem de boas vindas do sistema
 
     def mostra_menu(self):
+        # TODO: reimplementar com enumerate
         print("Os chat bots disponíveis no momento são: ")
         for bot in self.__lista_bots:
             print(str(self.__lista_bots.index(bot)) + " - Bot: " + bot.nome + ": " + bot.apresentacao())
@@ -47,7 +48,11 @@ class SistemaChatBot:
         if codigoDoComando == "-1":
             print(self.__bot.despedida())
         else:
-            system('clear')
+            try:
+                system('clear')
+            except:
+                system('cls')
+
             print(" -", self.__bot.executa_comando(codigoDoComando), "\n")
             self.mostra_comandos_bot()
             self.le_envia_comando()

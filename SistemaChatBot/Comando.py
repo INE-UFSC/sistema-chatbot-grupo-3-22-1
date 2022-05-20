@@ -4,4 +4,3 @@ class Comando():
         self.__respostas = lista[1] # Lista de respostas
 
     
-    

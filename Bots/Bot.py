@@ -18,9 +18,14 @@ class Bot(ABC):
     def mostra_comandos(self):
         string_retorno = ""
         for key, value in self.__comandos.items():
-            string_retorno += f"{key} - {value}\n"
+            # pode fazer verificacao se value[0] é mesmo o nome do comando ou a lista
+            string_retorno += f"{key} - {value[0]}\n"
     
         return string_retorno
+
+    @property
+    def comandos(self):
+        return self.__comandos
 
     @abstractmethod
     def executa_comando(self,cmd):
