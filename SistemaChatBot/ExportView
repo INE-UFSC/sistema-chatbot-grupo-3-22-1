@@ -1,0 +1,21 @@
+import PySimpleGUI as sg
+
+
+class ExportView:
+    def __init__(self):
+        self.__container = []
+        self.__window = sg.Window("Exportar", self.__container, font=("Helvetica", 14))
+    
+    def tela_consulta(self):
+        linha1 = [sg.Text("Nome do arquivo para exportar: ")]
+        linha2 = [sg.InputText("", key="nome_arquivo")]
+        linha3 = [sg.Button("Exportar")]
+                
+        self.__container = [linha1, linha2, linha3]
+        self.__window = sg.Window("Exportar", self.__container, font=("Helvetica", 14))
+        
+    def le_eventos(self):
+        return self.__window.read()
+    
+    def fim(self):
+        self.__window.close()
